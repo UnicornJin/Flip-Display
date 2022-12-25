@@ -14,12 +14,16 @@ import kotlin.concurrent.thread
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var viewGroup: List<FlipCharView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        viewGroup = listOf(
+            binding.flipCharView11, binding.flipCharView12, binding.flipCharView13, binding.flipCharView14, binding.flipCharView15)
 
 //        val flipCharView = binding.flipCharView11
 //
@@ -39,10 +43,19 @@ class MainActivity : AppCompatActivity() {
 //            }
 //              binding.flipCharView11.updateContent((5).digitToChar())
             delay(3000)
-            binding.flipCharView11.updateContent('B')
+            val firstString = "ABCDE"
+            for (i in firstString.indices) {
+                if(i < viewGroup.size) {
+                    viewGroup[i].updateContent(firstString[i])
+                }
+            }
+            val secondString = "axbzc"
             delay(10000)
-            binding.flipCharView11.updateContent('c')
-
+            for (i in secondString.indices) {
+                if(i < viewGroup.size) {
+                    viewGroup[i].updateContent(secondString[i])
+                }
+            }
         }
     }
 }

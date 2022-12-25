@@ -32,8 +32,9 @@ class FlipCharView@JvmOverloads constructor(
     private val mFontColor = Color.WHITE
     private val mGap = 3f
     private val mAnimationDuration = 150L
-    private var mDisplayingChar = ' '
-    private var mTargetChar = ' '
+    private val emptyChar = (0).toChar()
+    private var mDisplayingChar = emptyChar
+    private var mTargetChar = emptyChar
     private val mRectPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG).also {
         it.typeface = Typeface.createFromAsset(context.assets, "fonts/Chivo-G.ttf")
         it.textAlign = Paint.Align.CENTER
@@ -62,7 +63,11 @@ class FlipCharView@JvmOverloads constructor(
     }
 
     fun updateContent(targetChar: Char) {
-        mTargetChar = targetChar
+        if(charList.contains(targetChar)) {
+            mTargetChar = charList[(charList.indexOf(targetChar) - 1 + charList.size) %  charList.size]
+        } else {
+            mTargetChar = targetChar
+        }
     }
 
     private fun schedule() {
