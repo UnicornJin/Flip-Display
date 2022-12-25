@@ -22,7 +22,7 @@ class FlipCharView@JvmOverloads constructor(
     private val mMatrix: Matrix = Matrix()
     private var mCamera: Camera = Camera()
     private var mTextBounds: Rect
-    private val mWidth = 150f
+    private val mWidth = 100f
     private var mOriginX = 0f
     private val mOriginY = 0f
     private val mPadding = 0f
@@ -31,10 +31,13 @@ class FlipCharView@JvmOverloads constructor(
     private val mBackColor = Color.DKGRAY
     private val mFontColor = Color.WHITE
     private val mGap = 3f
-    private val mAnimationDuration = 150L
-    private val emptyChar = (0).toChar()
-    private var mDisplayingChar = emptyChar
-    private var mTargetChar = emptyChar
+    private val mAnimationDuration = 100L
+//    private val emptyChar = (0).toChar()
+//    private var mDisplayingChar = emptyChar
+//    private var mTargetChar = emptyChar
+    private var mDisplayingChar = ' '
+    private var mTargetChar = ' '
+
     private val mRectPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG).also {
         it.typeface = Typeface.createFromAsset(context.assets, "fonts/Chivo-G.ttf")
         it.textAlign = Paint.Align.CENTER
@@ -63,11 +66,13 @@ class FlipCharView@JvmOverloads constructor(
     }
 
     fun updateContent(targetChar: Char) {
-        if(charList.contains(targetChar)) {
-            mTargetChar = charList[(charList.indexOf(targetChar) - 1 + charList.size) %  charList.size]
-        } else {
-            mTargetChar = targetChar
-        }
+//        if(charList.contains(targetChar)) {
+//            mTargetChar = charList[(charList.indexOf(targetChar) - 1 + charList.size) %  charList.size]
+//        } else {
+//            mTargetChar = targetChar
+//        }
+
+        mTargetChar = targetChar
     }
 
     private fun schedule() {
@@ -82,6 +87,7 @@ class FlipCharView@JvmOverloads constructor(
                     mDisplayingChar = mTargetChar
                 }
             }
+
             postDelayed({ schedule() }, mAnimationDuration)
         }
     }
@@ -126,10 +132,14 @@ class FlipCharView@JvmOverloads constructor(
             mOriginX,
             mOriginY,
             mDisplayingChar.toString(),
-            if(charList.contains(mDisplayingChar) && charList.contains(mTargetChar)) {
-                charList[(charList.indexOf(mDisplayingChar) + 1) % charList.size].toString()
+            if (mDisplayingChar == mTargetChar) {
+                mDisplayingChar.toString()
             } else {
-                mTargetChar.toString()
+                if(charList.contains(mDisplayingChar) && charList.contains(mTargetChar)) {
+                    charList[(charList.indexOf(mDisplayingChar) + 1) % charList.size].toString()
+                } else {
+                    mTargetChar.toString()
+                }
             }
         )
     }
