@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FlipCharView">
+        <attr name="mViewBackgroundColor" format="color" />
+        <attr name="mViewFontColor" format="color" />
+        <attr name="mGap" format="dimension" />
+        <attr name="mCornerRadius" format="dimension" />
+        <attr name="mAnimationLength" format="integer" />
+    </declare-styleable>
+</resources>

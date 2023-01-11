@@ -13,4 +13,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "FlipDisplay"
-include ':app'
+include ':flipdisplay'
+include ':flipdisplayreferenceapp'
