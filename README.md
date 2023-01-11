@@ -34,7 +34,7 @@ In your app level build.gradle, add the dependency:
 The widget simulates the old-school flip board. 
 
 
-[![pSnGseg.gif](https://s1.ax1x.com/2023/01/11/pSnGseg.gif)](https://imgse.com/i/pSnGseg)
+[![pSnGseg.gif](https://s1.ax1x.com/2023/01/11/pSnGseg.gif)]
 
 
 ## How to use
