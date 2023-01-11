@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Form a flip view matrix of 15x7
+        // For easy management, I put them all into a list, with unique ID on each of them.
         viewGroup = listOf(
             binding.flipCharView11, binding.flipCharView12, binding.flipCharView13, binding.flipCharView14, binding.flipCharView15, binding.flipCharView16, binding.flipCharView17, binding.flipCharView18, binding.flipCharView19, binding.flipCharView110, binding.flipCharView111, binding.flipCharView112, binding.flipCharView113, binding.flipCharView114, binding.flipCharView115,
             binding.flipCharView21, binding.flipCharView22, binding.flipCharView23, binding.flipCharView24, binding.flipCharView25, binding.flipCharView26, binding.flipCharView27, binding.flipCharView28, binding.flipCharView29, binding.flipCharView210, binding.flipCharView211, binding.flipCharView212, binding.flipCharView213, binding.flipCharView214, binding.flipCharView215,
@@ -29,8 +31,12 @@ class MainActivity : AppCompatActivity() {
             binding.flipCharView71, binding.flipCharView72, binding.flipCharView73, binding.flipCharView74, binding.flipCharView75, binding.flipCharView76, binding.flipCharView77, binding.flipCharView78, binding.flipCharView79, binding.flipCharView710, binding.flipCharView711, binding.flipCharView712, binding.flipCharView713, binding.flipCharView714, binding.flipCharView715,
         )
 
+        // This is a list of contents you want to play on the view matrix
         displayGroup = mutableListOf<DisplayContent>()
 
+        // I defined some messages I want to show on the matrix.
+        // DisplayContent: is a container to hold messages. It provides methods to set message on each row:
+        // DisplayContent.setRow(rowNumber: int, message: string)
         val welcomeMessage = DisplayContent(15, 7)
         welcomeMessage.setRow(3, "  Flip Display ")
 
@@ -56,15 +62,21 @@ class MainActivity : AppCompatActivity() {
 
     @OptIn(DelicateCoroutinesApi::class)
     private fun schedule() {
+        // Do the view content update
+        // Never do this on main progress, use coroutine or other concurrent programming features
         GlobalScope.launch(context = Dispatchers.IO) {
             delay(1000)
 
             for (item in displayGroup) {
+                // Go through the displayGroup which contains the messages we want to display
                 for (i in viewGroup.indices) {
+                    // Go through the message, update each view
                     val row = i / 15
                     val column = i % 15
                     viewGroup[i].updateContent(item.getCharAt(row, column))
                 }
+                // Wait enough time for the animation to finish, you need to calculate your best waiting time.
+                // Or next new message comes but current message haven't finished animation.
                 delay(9500)
             }
         }
