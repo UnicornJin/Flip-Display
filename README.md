@@ -32,7 +32,7 @@ In your app level build.gradle, add the dependency:
 
 ## How does it look like:
 The widget simulates the old-school flip board. 
-![](https://github.com/UnicornJin/Flip-Display/blob/main/materials/demo.gif)
+![image](https://github.com/UnicornJin/Flip-Display/blob/main/materials/demo.gif)
 
 ## How to use
 You can check out the "flipdisplayreferenceapp" for the example of using this widget.
