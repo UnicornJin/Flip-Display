@@ -1,5 +1,8 @@
 # Flip-Display
-A flip display simulator.
+
+A flip display simulator for Android.
+
+You can easily apply to your Android project and use it.
 
 The idea comes from a video on YouTube:
 [![Split Flap Display by Oat Foundry | Old School Departures Boards](https://res.cloudinary.com/marcomontalbano/image/upload/v1673423472/video_to_markdown/images/youtube--F8wx-h_sfR0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/F8wx-h_sfR0 "Split Flap Display by Oat Foundry | Old School Departures Boards")
@@ -31,8 +34,8 @@ In your app level build.gradle, add the dependency:
 	}
 
 ## How does it look like:
-The widget simulates the old-school flip board. 
 
+The widget simulates the old-school flip board. 
 
 [![pSnGseg.gif](https://s1.ax1x.com/2023/01/11/pSnGseg.gif)]
 
@@ -110,4 +113,5 @@ You can customized these things:
 ## Author's Personal Blog:
 
 blog.unicornjin.com 
+
 Welcome to check it out!
