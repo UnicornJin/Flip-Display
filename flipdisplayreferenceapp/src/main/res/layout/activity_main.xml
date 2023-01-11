@@ -11,8 +11,6 @@
         android:id="@+id/flip_char_view_1_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:mViewBackgroundColor="@color/purple_700"
-        app:mCornerRadius="50dp"
         app:layout_constraintBottom_toTopOf="@id/flip_char_view_2_1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/flip_char_view_1_2"
