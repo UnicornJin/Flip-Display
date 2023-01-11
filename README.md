@@ -54,8 +54,49 @@ The module provides a container to hold the messages:
 You can define several messages you want to display on the matrix with the DisplayContent, and update your FlipCharViews. Go to reference app folder's MainActivity for details.
 (Remember to consider concurrent programming)
 
-You can customized these variables:
+You can customized these things:
     
+    // default char list
+    // if current displaying is 'Z', and you update the content to 'A'
+    // the board will flip all "a-z", "0-9", and the special chars 
+    // and back to beginning, until it shows 'A'
+    // 
+    // when you initialize a FlipCharView, the default showing
+    // char is blank spack ' '
+    private var charList = mutableListOf<Char>(
+        ' ',
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+        ':', ',', '/'
+    )
+
+    // You can update this char list:
+    // Add new char to it
+    fun addToCharList(newChar: Char) {
+        charList.add(newChar)
+    }
+    // Just use a new charList
+    fun replaceCharList(newCharList: MutableList<Char>) {
+        charList = newCharList
+    }
+
+    // These attributes are updated in View declaration
+
+    // View background color, default darkgray
+        <attr name="mViewBackgroundColor" format="color" />
+
+    // Font color, default white
+        <attr name="mViewFontColor" format="color" />
+    
+    // The gap width between the two boards, default 3f
+        <attr name="mGap" format="dimension" />
+    
+    // The size of round corner, default 20f
+        <attr name="mCornerRadius" format="dimension" />
+    
+    // The time needed for each flip animation, default 100 (means 0.1s per flip)
+        <attr name="mAnimationLength" format="integer" />
 
 
 ## Development Plan:
